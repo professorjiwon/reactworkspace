@@ -1,0 +1,13 @@
+github 에서 다운로드후 실행시
+
+c:\program Files\nodejs\  npm.ps1 -> 파일 삭제
+
+vscode에서 다운로드 받은 폴더 열고 ->
+터미널 열어 (cmd로 바꾸기) -> 
+
+  PS D:\kjw\test\>cd 01.my-app       (cd 프로젝트명)
+  PS D:\kjw\test\01.my-app>npm i   
+        (설치가 다 되면)
+  폴더\프로젝트명>npm start
+          (실행)
+  
