@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+header, footer {
+  background-color: black;
+  color: white;
+  height: 15vh;
+  line-height: 15vh;
+}
