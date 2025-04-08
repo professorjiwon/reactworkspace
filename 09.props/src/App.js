@@ -8,6 +8,7 @@
 
 import './App.css';
 import Compo from './components/Compo';
+import Button from './components/Button';
 
 /*  1. 문자 혹은 변수로 값 넘겨주기
 function App() {
@@ -21,6 +22,7 @@ function App() {
 }
 */ 
 
+/*
 function App() {
   const userInfo = {
     name : "임수정",
@@ -30,5 +32,9 @@ function App() {
   // return <Compo user={userInfo} />   //  2. 객체로 넘겨주기
   return <Compo {...userInfo} />        // 3. 객체를 스프레드 연산자로 풀어서 넘겨주기
 }
+*/
 
+function App() {
+  return <Compo />
+}
 export default App;
