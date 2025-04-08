@@ -60,7 +60,7 @@ const Compo = () => {
             <h3>버튼 만들기</h3>
             <button onClick={btnClick} name='A버튼'>A버튼 이벤트</button><br/><br/>
             <button onClick={() => {alert('왜 불러')}} name='B버튼'>B버튼 이벤트</button><br/><br/>
-            <Button />
+            {/* <Button />   1. */}
             <Button btnValue={btnProps}/>
             <Button {...btnProps} />
         </>
