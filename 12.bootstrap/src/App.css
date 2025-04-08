@@ -1,0 +1,22 @@
+#header {
+  display: flex;
+  justify-content : space-around;
+  align-items:center;
+  height : 15vh;
+  background-color: #FAF4C0;
+}
+.App {
+  text-align: center;
+}
+.logo {
+  width: 150px;
+}
+section {
+  height: 70vh;
+}
+footer {
+  padding : 10px 0 0 100px;
+  height: 15vh;
+  font-size:small;
+  background-color: #FAF4C0;
+}
