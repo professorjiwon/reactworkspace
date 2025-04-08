@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>Counter</h1>
-      <Views count/>  
+      <Views/>  
     </div>
   );
 }

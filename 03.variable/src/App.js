@@ -5,7 +5,8 @@ function App() {
   // 출력시 { }안에 넣어서 출력
   const name = 'Tjoeun';
   let classname = 'java 취업캠프';
-  var value = '변수';
+  var value = '변수';   // var 권장하지 않음
+
   const funcName = () => {
     return '함수에서 문자 반환';
   }

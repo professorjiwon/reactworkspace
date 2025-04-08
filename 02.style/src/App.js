@@ -27,14 +27,14 @@ function App() {
     },
     h1 : {color : "red"},
     h3 : {color : "green"},
-    class1 : {color : "pink"},
+    p1 : {color : "pink"},
     id2 : {color : "blue"}
   }
   return (
     <div style={style.div}>
       <h1 style={style.h1}>더조은에 오신것을 환영합니다.</h1>
       <h3 style={style.h3}>JAVA 풀스택 웹&앱 개발자 취업캠프</h3>
-      <p style={style.class1}>react class로 style적용하기</p>
+      <p style={style.p1}>react class로 style적용하기</p>
       <p style={style.id2}>id로 스타일 적용하기</p>
     </div>
   );

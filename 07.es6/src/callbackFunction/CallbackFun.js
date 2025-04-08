@@ -22,7 +22,7 @@ function CallbackFun() {
 
     //filter() : 콜백함수의 리턴값이 true인 것들로만 새로운 배열을 만드는 함수
     let num = [0,1,2,3,4,5]
-
+    
     let oddNum = num.filter( value => value % 2 == 1 )
 
     /*
