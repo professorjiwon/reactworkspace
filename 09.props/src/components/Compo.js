@@ -24,7 +24,7 @@ const Compo = (props) => {
 */
 
 
-// 3. 객체를 스프레드 연사자로 풀어서 넘겨준 값 받기
+// 3. 객체를 스프레드 연산자로 풀어서 넘겨준 값 받기
 const Compo = ({name, addr, likeList}) => {
     return (
         <>

@@ -21,7 +21,6 @@ function App() {
 }
 */ 
 
-
 function App() {
   const userInfo = {
     name : "임수정",
@@ -29,7 +28,7 @@ function App() {
     likeList : ['캐릭터', '만화', '웹툰']
   }
   // return <Compo user={userInfo} />   //  2. 객체로 넘겨주기
-  return <Compo {...userInfo} />        // 3. 객체를 스프레드 연사자로 풀어서 넘겨주기
+  return <Compo {...userInfo} />        // 3. 객체를 스프레드 연산자로 풀어서 넘겨주기
 }
 
 export default App;
