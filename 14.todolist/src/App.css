@@ -71,10 +71,10 @@
 
 .List input[type="text"] {
   padding: 10px;
-  width: 100%;
+  width: 97%;
   margin-bottom: 10px;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 14px;
+  border-radius: 5px;
   border: 1px solid #ddd;
 }
 

@@ -34,8 +34,10 @@ function App() {
       DOM요소에 직접 접근가능
       재랜더링 되지 않음
   */ 
+  // 새로운 todolist 추가시 id의 번호 부여 변수
   const idRef = useRef(3);
 
+  // 새로운 todolist 추가하는 함수
   const onCreate = (content) => {
     const newItem = {
       id : idRef.current++,
@@ -45,6 +47,21 @@ function App() {
     }
     setTodos([newItem, ...todos])
   }
+
+  // 삭제시 isDone의 체크박스를 true로 바꾸기
+  const onUpdate = (targetId) => {
+    setTodos (todos.map((todo) => {
+      if(todo.id == targetId) {
+        return {
+          ...todo,
+          isDone : !todo.isDone
+        }
+      }
+      return todo;
+    })
+  )}
+
+
   return (
     <div className="App">
       <Header/>
