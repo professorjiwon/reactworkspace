@@ -11,50 +11,44 @@ import { useState } from 'react';
     3. state에 따라 UI가 어떻게 보일지 조건문등로 작성
 */
 function App() {
-  const [like, setLike] = useState(0);
+  const [like, setLike] = useState([0,0,0]);
   const [title, setTitle] = useState(['얌샘김밥', '초밥', "JIMMY JOHN'S"]);
   const [modal, setModal] = useState(false);
   
   return (
     <div className="App">
       <h2>FOODIE SPOT</h2>
+        {
+          title.map(function(v, i){
+            return (
+              <div className='list' key={i}>
+                <h4 onClick={()=>{setModal(!modal)}}>{title[i]}</h4>
+                <p>04월 09일 <span onClick={()=>{
+                    let copy = [...like];
+                    copy[i] = copy[i] + 1;
+                    setLike(copy)
+                  }}>🥇</span> {like[i]} </p>
+              </div>
+            )
+          })
+        }
 
-        배열.map(function(v, i){})
-
-        <div className='list'>
-          <h4 onClick={()=>{setModal(!modal)}}>{title[0]}</h4>
-          <p>04월 09일 <span onClick={()=>{setLike(like+1)}}>🥇</span> {like} </p>
-        </div>
-
-        <div className='list'>
-          <h4>{title[1]}</h4>
-          <p>04월 09일 <span>🥇</span> 0 </p>
-        </div>
-
-        <div className='list'>
-          <h4>{title[2]}</h4>
-          <p>04월 09일 <span>🥇</span> 0 </p>
-        </div>
-
-        { modal ? <Modal/> : null }
-
-        <button onClick={() => {
-          let copy = [...title];
-          copy[0] = '김밥천국';
-          setTitle(copy);
-        }}>글수정</button>
-
-        
+        { modal ? <Modal title={title} setTitle={setTitle}/> : null }
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={() => {
+          let copy = [...props.title];
+          copy[0] = '김밥천국';
+          props.setTitle(copy);
+        }}>글수정</button>
     </div>
   )
 }
