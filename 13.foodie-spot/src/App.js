@@ -14,6 +14,8 @@ function App() {
   const [like, setLike] = useState([0,0,0]);
   const [title, setTitle] = useState(['얌샘김밥', '초밥', "JIMMY JOHN'S"]);
   const [modal, setModal] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
+  const [inputValue, setInputValue] = useState('');
   
   return (
     <div className="App">
@@ -22,7 +24,7 @@ function App() {
           title.map(function(v, i){
             return (
               <div className='list' key={i}>
-                <h4 onClick={()=>{setModal(!modal)}}>{title[i]}</h4>
+                <h4 onClick={()=>{setModal(!modal); setModalIndex(i)}}>{title[i]}</h4>
                 <p>04월 09일 <span onClick={()=>{
                     let copy = [...like];
                     copy[i] = copy[i] + 1;
@@ -33,7 +35,8 @@ function App() {
           })
         }
 
-        { modal ? <Modal title={title} setTitle={setTitle}/> : null }
+        <input onChange={(e) => { setInputValue(e.target.value) }} />
+        { modal ? <Modal title={title} setTitle={setTitle} modalIndex={modalIndex} inputValue={inputValue}/> : null }
     </div>
   );
 }
@@ -41,14 +44,16 @@ function App() {
 function Modal(props) {
   return (
     <div className='modal'>
-      <h4>{props.title[0]}</h4>
+      <h4>{props.title[props.modalIndex]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button onClick={() => {
-          let copy = [...props.title];
-          copy[0] = '김밥천국';
-          props.setTitle(copy);
-        }}>글수정</button>
+      <div className='update'>
+        <button onClick={() => {
+            let copy = [...props.title];
+            copy[props.modalIndex] = props.inputValue;
+            props.setTitle(copy);
+          }}>글수정</button>
+        </div>
     </div>
   )
 }

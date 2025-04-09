@@ -27,3 +27,11 @@ span {
   background-color: rgb(147, 177, 196);
   padding: 5px 50px;
 }
+.update {
+  text-align: center;
+}
+button {
+  border : none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
