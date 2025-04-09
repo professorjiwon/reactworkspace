@@ -52,8 +52,8 @@ function App() {
 
   // unmount 될 때 => retrun 사용
   useEffect(() => {
-    console.log('Mount');
-    return () => {
+    console.log('Mount');  // mount 될때 호출
+    return () => {        // unmount 될때 호출
       console.log('unMount');
     }
   },[])

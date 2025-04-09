@@ -21,7 +21,7 @@ const Header = () => {
     )
 }
 
-function Login({show, handleShow, handleClose}) {
+function Login({show, handleClose}) {
     return (
         <div>
         <Modal show={show} onHide={handleClose}>
