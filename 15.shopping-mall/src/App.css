@@ -7,9 +7,10 @@
   /* background-image: url("./img/main_bg.avif"); */
 
   /* bublic/img에 이미지를 넣었을 때 */
-  background-image: url("../public/img/main_bg.avif"); 
+  background-image: url("../public/img/main_bg.png"); 
   
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
+  margin-bottom: 30px;
 }
