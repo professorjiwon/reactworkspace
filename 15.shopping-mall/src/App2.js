@@ -3,16 +3,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import pList from './data/ProductList';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import Cart from './pages/Cart';
 import Detail from './pages/Detail';
 
+/*
+  * react-router-dom
+    : 페이지를 교체시켜주는 api -> router-dom
+
+  * 사용하려면
+    1. 설치 : npm i react-router-dom
+    2. index.js에 <BrowserRouter> 태그 넣어주기
+*/
 function App() {
   const [clothes, setClothes] = useState(pList);
-  /*
-    * useNavigate() : 페이지의 이동을 도와주는 함수
-  */
-  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -20,17 +24,15 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">Fashion Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={() => { navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/detail')}}>Detail</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/cart')}}>Cart</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/about')}}>About</Nav.Link>
-            {/* 
-            <Nav.Link onClick={() => { navigate(1)}}>Cart</Nav.Link>  1page앞으로
-            <Nav.Link onClick={() => { navigate(-1)}}>Cart</Nav.Link>  1page뒤로
-             */}
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Cart</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
+
+      <Link to="/">Home</Link>
+      <Link to="/detail">상세페이지</Link>
+      <Link to="/cart">장바구니</Link>
 
       <Routes>
         <Route path='/' element={
@@ -49,21 +51,8 @@ function App() {
             </Container>
           </>
         }/>
-
-        <Route path='/detail/:pindex' element={<Detail clothes={clothes}/>} />
-
-        {/* 
-        - member는 문자
-        <Route path='/detail/member/:pid' element={<Detail clothes={clothes}/>} />
-                  
-        - 데이터를 여러개 보낼 때  /detail/1/홍길동 
-        <Route path='/detail/:pid/:name' element={<Detail clothes={clothes}/>} />    
-        */}
-
-
+        <Route path='/detail' element={<Detail/>} />
         <Route path='/cart' element={<Cart/>} />
-        <Route path='/about' element={<div>더조은 컴퓨터 아카데미</div>} />
-        <Route path='*' element={<div>없는 페이지 입니다.</div>} />
       </Routes>
     </div>
   );
