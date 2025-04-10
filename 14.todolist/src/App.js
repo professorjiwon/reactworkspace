@@ -50,6 +50,7 @@ function App() {
 
   // 삭제시 isDone의 체크박스를 true로 바꾸기
   const onUpdate = (targetId) => {
+    console.log(targetId);
     setTodos (todos.map((todo) => {
       if(todo.id == targetId) {
         return {
@@ -58,15 +59,22 @@ function App() {
         }
       }
       return todo;
-    })
-  )}
+    }))
+    // 삼항 연사자로 변경하면
+    // setTodos (todos.map((todo) => todo.id == targetId ? {...todo, isDone : !todo.isDone} : todo ))
+  }
+
+  // 삭제하기
+  const onDelete = (targetId) => {
+    setTodos(todos.filter((todo) => todo.id != targetId))
+  }
 
 
   return (
     <div className="App">
       <Header/>
       <Editor onCreate={onCreate}/>
-      <List todos={todos}/>
+      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
   );
 }
