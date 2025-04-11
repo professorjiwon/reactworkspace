@@ -18,6 +18,8 @@ import axios from 'axios';
                        재사용이 어렵다
     2. Redux : 외부 라이브러리
        주로 사용
+
+       설치하기 : npm install @reduxjs/toolkit react-redux
 */
 
 function App() {
