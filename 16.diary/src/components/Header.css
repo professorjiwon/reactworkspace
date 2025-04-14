@@ -1,0 +1,12 @@
+.Header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid lightgray;
+}
+.header_center {
+    width: 50%;
+}
+.header_left, .header_right {
+    width: 25%;
+}

@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Detail from './pages/Detail';
 import Edit from './pages/Edit';
-import { useReducer, useRef } from 'react';
+import { useReducer, useRef, createContext } from 'react';
 
 const mockData = [
   {
@@ -74,6 +74,13 @@ function App() {
       id
     })
   }
+
+  /*
+    * createContext() : 전역상태를 공유하여 관리 
+  */
+  const DiaryStateContext = createContext();    // 상태 저장용
+  const DiartDispathContext = createContext();   // dispath(액션처리용)
+
   return (
     <div className="App">
       <button onClick={() => {
@@ -88,20 +95,24 @@ function App() {
         onDelete(1)
       }}>일기 삭제</button>
 
-      
+
       <div>
         <Link to={"/"}>Home</Link>
         <Link to={"/new"}>New</Link>
         <Link to={"/detail"}>Detail</Link>
         <Link to={"/edit"}>Edit</Link>
       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="/*" element={<div>잘못된 페이지 입니다</div>} />
-      </Routes>
+      <DiaryStateContext.Provider value={data}>
+        <DiartDispathContext.Provider value={{onCreate, onUpdate, onDelete}}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<New />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/edit" element={<Edit />} />
+            <Route path="/*" element={<div>잘못된 페이지 입니다</div>} />
+          </Routes>
+        </DiartDispathContext.Provider>
+      </DiaryStateContext.Provider>
     </div>
   );
 }
