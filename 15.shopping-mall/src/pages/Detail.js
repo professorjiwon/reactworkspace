@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Button, Nav} from 'react-bootstrap';
+import {Button, Nav, Table} from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 import { addItem } from '../store/store';
 import { useDispatch } from 'react-redux';
@@ -9,8 +9,11 @@ function Detail(props) {
     useEffect(() => {
         let p = localStorage.getItem('recentProduct')
         p = JSON.parse(p)
-        p.push(findId.id)
-        localStorage.setItem('recentProduct', JSON.stringify(p))
+
+        if(!p.includes(findId.id)) {
+            p.push(findId.id)
+            localStorage.setItem('recentProduct', JSON.stringify(p))
+        }
     },[])
 
     let dispatch = useDispatch()
@@ -67,8 +70,48 @@ function Detail(props) {
             </Nav>
 
             <TabContent tab = {tab} />
+            <RecentViewed clothes={props.clothes} />
         </div>
     )
+}
+
+function RecentViewed ({clothes}) {
+    const [recent, setRecent] = useState([]);
+
+    useEffect (() => {
+        let viewed = JSON.parse(localStorage.getItem('recentProduct')) || []
+
+        let products = viewed.map(id => clothes.find(c => c.id == id))
+
+        setRecent(products);
+    },[clothes])
+
+    return (
+        <div>
+            <h4>👀 최근 본 상품</h4>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>제품설명</th>
+                        <th>가격</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {
+                    recent.map((item) => 
+                        <tr>
+                            <td>{item.title}</td>
+                            <td>{item.content}</td>
+                            <td>{item.price}원</td>
+                        </tr>
+                    )
+                }
+                </tbody>
+            </Table>
+        </div>
+    )
+
 }
 
 function TabContent({tab}) {
