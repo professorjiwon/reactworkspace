@@ -4,20 +4,91 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Detail from './pages/Detail';
 import Edit from './pages/Edit';
-import { getEmotionImg } from './util/emotion-img'
+import { useReducer, useRef } from 'react';
+
+const mockData = [
+  {
+    id : 1,
+    createDate : new Date().getTime(),
+    emotionId : 1,
+    content : "1번 일기 내용"
+  },
+  {
+    id : 2,
+    createDate : new Date().getTime(),
+    emotionId : 2,
+    content : "2번 일기 내용"
+  }
+]
+
+function reducer(state, action) {
+  switch(action.type) {
+    case "CREATE" :
+      return [action.data, ...state];
+    case "UPDATE" :
+      return state.map((item) => 
+        String(item.id) === String(action.data.id) ? action.data : item
+      )
+    case "DELETE" :
+      return state.filter((item) => String(item.id) != String(action.id))
+  }
+}
 
 function App() {
+  /*
+    useReducer() : 상태관리, 상태 업데이트 hook
+  */
+  const [data, dispatch] = useReducer(reducer, mockData);
+  const idRef = useRef(3);
+
+  // 일기 추가
+  const onCreate = (createDate, emotionId, content) => {
+    dispatch({
+      type: "CREATE",
+      data : {
+        id : idRef.current++,
+        createDate,
+        emotionId,
+        content
+      }
+    })
+  }
+
+  // 일기 update
+  const onUpdate = (id, createDate, emotionId, content) => {
+    dispatch({
+      type: "UPDATE",
+      data : {
+        id,
+        createDate,
+        emotionId,
+        content
+      }
+    })
+  }
+
+  // 일기 delete
+  const onDelete = id => {
+    dispatch({
+      type: "DELETE",
+      id
+    })
+  }
   return (
     <div className="App">
-      <div>
-        <img src={getEmotionImg(1)} />
-        <img src={getEmotionImg(2)} />
-        <img src={getEmotionImg(3)} />
-        <img src={getEmotionImg(4)} />
-        <img src={getEmotionImg(5)} />
-        <img src={getEmotionImg(6)} />
-        <img src={getEmotionImg(7)} />
-      </div>
+      <button onClick={() => {
+        onCreate(new Date().getTime(), 3, "Hello")
+      }}>일기 추가</button>
+
+      <button onClick={() => {
+        onUpdate(1, new Date().getTime(), 3, "수정된 일기 입니다")
+      }}>일기 수정</button>
+
+      <button onClick={() => {
+        onDelete(1)
+      }}>일기 삭제</button>
+
+      
       <div>
         <Link to={"/"}>Home</Link>
         <Link to={"/new"}>New</Link>
