@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import {Button, Nav} from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { addItem } from '../store/store';
+import { useDispatch } from 'react-redux';
 
 function Detail(props) {
 
-    let {pid} = useParams();
+    let dispatch = useDispatch()
+    const nav = useNavigate()
 
+    let {pid} = useParams();
     let findId = props.clothes.find((v) => v.id == pid)
 
     let[alert, setAlert]= useState(true);
@@ -35,7 +39,11 @@ function Detail(props) {
                     <h4>{findId.title}</h4>
                     <p>{findId.content}</p>
                     <p>{findId.price}원</p>
-                    <Button variant="outline-info">주문하기</Button>
+                    <Button variant="outline-info" onClick={() => {
+                        dispatch(addItem({id:findId.id, name:findId.title,  count:1}))
+                        nav('/cart')
+                    }}    
+                    >주문하기</Button>
                 </div>
             </div>
 
