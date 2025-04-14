@@ -1,6 +1,6 @@
 import {Table, Button} from 'react-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
-import { changeName, ageUpdate  } from '../store/store';
+import { changeName, ageUpdate  } from '../store/userSlice';
 /*
     * Redux 변경하기
       1. store.js에서 변경해주는 함수 만들고
@@ -24,7 +24,7 @@ function Cart() {
             {user.name}의 장바구니<br/>
             {user.age}
             <Button variant="outline-info" onClick={() => {
-                                    dispatch(ageUpdate())
+                                    dispatch(ageUpdate(5))
                                 }}>나이변경</Button>
             <Table striped bordered hover>
                 <thead>
@@ -57,8 +57,8 @@ function Cart() {
                                 <td>{v.name}</td>
                                 <td>{v.count}</td>
                                 <td><Button variant="outline-info" onClick={() => {
-                                    dispatch(changeName())
-                                }}>이름바꾸기</Button></td>
+                                    dispatch(수량변경)
+                                }}>+</Button></td>
                             </tr>
                         ) 
                     }
