@@ -1,28 +1,48 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import pList from './data/ProductList';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Cart from './pages/Cart';
 import Detail from './pages/Detail';
 import axios from 'axios';
 
-/*  
-  * SPA의 단점
-    - 컴포넌트간의 STATE공유 어려움
-
-  * 공유저장 공간 사용
-    1. Context Api : 기본 탑재되어 있음
-       잘 안쓰는 이유 : 성능 이슈(하나만 변해도 하위의 모든것들을 재랜더링)
-                       재사용이 어렵다
-    2. Redux : 외부 라이브러리
-       주로 사용
-
-       설치하기 : npm install @reduxjs/toolkit react-redux
-*/
-
 function App() {
+  /*
+  // [object Object]의 문자열로 들어감 쓸 수 없음
+  let obj = {addr : '강남구'}
+  localStorage.setItem('addr', obj);
+  */
+
+  // JSON으로 모두 문자열로 변환하여 넣는다
+  let obj = {addr : '강남구'}
+  let addr = JSON.stringify(obj)
+  localStorage.setItem('addr', addr);
+
+  let user = {
+    name: 'kim',
+    age : 25,
+    hobbies : ['programing', 'gaming']
+  }
+  localStorage.setItem('user', JSON.stringify(user))
+
+  // 가져올 때 json의 형태로 들어옴
+  let getUser = localStorage.getItem('user');
+  console.log(getUser)
+  console.log(getUser.name)  // 사용못함
+
+  // 가져올 때 json -> object 형태로 변환
+  let storageUser = localStorage.getItem('user');
+  let u = JSON.parse(storageUser) // object로 변경
+  console.log(u.name)
+
+  // 문. 최근에 본 상품 보여주기
+  useEffect(() => {
+    localStorage.setItem('recentProduct', JSON.stringify( [] ))
+  },[])
+
+
   const [clothes, setClothes] = useState(pList);
   const [clickCount, setClickCount] = useState(2);
 

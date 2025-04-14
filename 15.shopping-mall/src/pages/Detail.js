@@ -5,6 +5,13 @@ import { addItem } from '../store/store';
 import { useDispatch } from 'react-redux';
 
 function Detail(props) {
+    
+    useEffect(() => {
+        let p = localStorage.getItem('recentProduct')
+        p = JSON.parse(p)
+        p.push(findId.id)
+        localStorage.setItem('recentProduct', JSON.stringify(p))
+    },[])
 
     let dispatch = useDispatch()
     const nav = useNavigate()
