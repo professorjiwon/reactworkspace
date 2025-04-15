@@ -47,7 +47,6 @@ const Home = (() => {
     }
     return (
         <div>
-            <h4>Home</h4>
             <Header 
                 title={`${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`}
                 leftChild = {<Button text={"<"} onClick={onDecreaseMonth} />}
