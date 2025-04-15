@@ -1,5 +1,7 @@
 .EmotionItem {
    text-align: center;
+   padding-top:5px;
+   width: 12%;
 }
 .EmotionItem img {
     width: 60px;
@@ -14,7 +16,7 @@
 }
 .EmotionItem_on_3{
     color: white;
-    background-color:rgb(223, 217, 41);
+    background-color:rgb(67, 224, 242);
 }
 .EmotionItem_on_4{
     color: white;

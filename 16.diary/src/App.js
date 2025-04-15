@@ -101,8 +101,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/new" element={<New />} />
-            <Route path="/detail" element={<Detail />} />
-            <Route path="/edit" element={<Edit />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/edit/:id" element={<Edit />} />
             <Route path="/*" element={<div>잘못된 페이지 입니다</div>} />
           </Routes>
         </DiaryDispathContext.Provider>
