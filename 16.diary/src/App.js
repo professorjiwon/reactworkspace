@@ -9,16 +9,28 @@ import { useReducer, useRef, createContext } from 'react';
 const mockData = [
   {
     id : 1,
-    createDate : new Date().getTime(),
+    createDate : new Date("2025-04-15").getTime(),
     emotionId : 1,
     content : "1번 일기 내용"
   },
   {
     id : 2,
-    createDate : new Date().getTime(),
+    createDate : new Date("2025-04-03").getTime(),
     emotionId : 2,
     content : "2번 일기 내용"
-  }
+  },
+  {
+    id : 3,
+    createDate : new Date("2025-03-25").getTime(),
+    emotionId : 3,
+    content : "3번 일기 내용"
+  },
+  {
+    id : 4,
+    createDate : new Date("2025-02-17").getTime(),
+    emotionId : 4,
+    content : "4번 일기 내용"
+  },
 ]
 
 function reducer(state, action) {
@@ -42,7 +54,7 @@ function App() {
     useReducer() : 상태관리, 상태 업데이트 hook
   */
   const [data, dispatch] = useReducer(reducer, mockData);
-  const idRef = useRef(3);
+  const idRef = useRef(5);
 
   // 일기 추가
   const onCreate = (createDate, emotionId, content) => {
