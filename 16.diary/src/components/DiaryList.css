@@ -1,0 +1,15 @@
+.menu_bar {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+.menu_bar select {
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.menu_bar button {
+    flex: 1
+}

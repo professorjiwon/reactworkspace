@@ -34,9 +34,6 @@ function reducer(state, action) {
   }
 }
 
-export const DiaryStateContext = createContext();    // 상태 저장용
-export const DiaryDispathContext = createContext();   // dispath(액션처리용)
-  
 function App() {
   /*
     useReducer() : 상태관리, 상태 업데이트 hook
@@ -81,9 +78,29 @@ function App() {
   /*
     * createContext() : 전역상태를 공유하여 관리 
   */
+  const DiaryStateContext = createContext();    // 상태 저장용
+  const DiaryDispathContext = createContext();   // dispath(액션처리용)
 
   return (
     <div className="App">
+      <button onClick={() => {
+        onCreate(new Date().getTime(), 3, "Hello")
+      }}>일기 추가</button>
+
+      <button onClick={() => {
+        onUpdate(1, new Date().getTime(), 3, "수정된 일기 입니다")
+      }}>일기 수정</button>
+
+      <button onClick={() => {
+        onDelete(1)
+      }}>일기 삭제</button>
+
+      <div>
+        <Link to={"/"}>Home</Link>
+        <Link to={"/new"}>New</Link>
+        <Link to={"/detail"}>Detail</Link>
+        <Link to={"/edit"}>Edit</Link>
+      </div>
       <DiaryStateContext.Provider value={data}>
         <DiaryDispathContext.Provider value={{onCreate, onUpdate, onDelete}}>
           <Routes>

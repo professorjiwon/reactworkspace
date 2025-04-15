@@ -1,0 +1,15 @@
+.button {
+    background-color: gainsboro;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.button_green {
+    background-color:forestgreen;
+    color: white;
+}
+.button_red {
+    background-color: hotpink;
+    color: white;
+}
