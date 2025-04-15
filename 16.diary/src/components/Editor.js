@@ -35,15 +35,24 @@ const emotionList = [
     },
 ]
 
+const getStringDate = (targetDate) => {
+    // yyyy-01-01
+    let year = targetDate.getFullYear();
+    let month = targetDate.getMonth() + 1;
+    let date = targetDate.getDate()
+    if(month < 10) {
+        month = `0${month}`;
+    }
+    if(date < 10) {
+        date = `0${date}`;
+    }
+    return `${year}-${month}-${date}`;
+}
+
+
 const Editor = ({onSubmit}) => {
     const nav = useNavigate();
     
-    const [input, setInput] = useState({
-        createDate : new Date(),
-        emotionId : 4,
-        content : ""
-    })
-
     const getStringDate = (targetDate) => {
         // yyyy-01-01
         let year = targetDate.getFullYear();
@@ -57,6 +66,12 @@ const Editor = ({onSubmit}) => {
         }
         return `${year}-${month}-${date}`;
     }
+
+    const [input, setInput] = useState({
+        createDate : new Date(),
+        emotionId : 4,
+        content : ""
+    })
 
     const onChangeInput = (e) => {
         let name = e.target.name;
