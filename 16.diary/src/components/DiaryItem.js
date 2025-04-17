@@ -7,10 +7,14 @@ const DiaryItem = ({id, emotionId, createDate, content}) => {
     const nav = useNavigate();
     return (
         <div className="DiaryItem">
-            <div className="img_section">
+            <div className="img_section"
+                 onClick={()=>nav(`/detail/${id}`)}
+            >
                 <img src={getEmotionImg(emotionId)} />
             </div>
-            <div className="info_section">
+            <div className="info_section"
+                onClick={()=>nav(`/detail/${id}`)}
+            >
                 <div>{new Date(createDate).toLocaleDateString()}</div>
                 <div>{content}</div>
             </div>
