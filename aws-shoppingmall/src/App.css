@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.main-bg {
+  height: 400px;
+  /* src/img에 이미지가 있을 때 */
+  /* background-image: url("./img/main_bg.png"); */
+
+  /* public/img에 이미지가 있을 때 */
+  background-image: url("../public/img/main_bg.png"); 
+  
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position: center;
+  margin-bottom: 30px;
+}
+.detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail img {
+  margin-top: 50px;
+  width: 30%;
+}
+.detail_text {
+  margin-top: 50px;
+  width: 20%;
+  text-align: center;
+}
+
+.detail_text > * {
+  margin-bottom: 30px;
+}
+
+.deNav {
+  margin: 50px 0;
+}
+
+/* 애니메이션 주기 */
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 1s;
+}
